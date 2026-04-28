@@ -185,6 +185,9 @@ public:
 
 	void clear();
 
+	// Get all error messages (MSG_TYPE_ERROR) for MCP server access
+	Array get_errors();
+
 	EditorLog();
 	~EditorLog();
 };

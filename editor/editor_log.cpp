@@ -248,6 +248,20 @@ void EditorLog::clear() {
 	_clear_request();
 }
 
+Array EditorLog::get_errors() {
+	Array error_list;
+	for (int i = 0; i < messages.size(); i++) {
+		if (messages[i].type == MSG_TYPE_ERROR) {
+			Dictionary error_entry;
+			error_entry["message"] = messages[i].text;
+			error_entry["type"] = "error";
+			error_entry["count"] = messages[i].count;
+			error_list.append(error_entry);
+		}
+	}
+	return error_list;
+}
+
 void EditorLog::_process_message(const String &p_msg, MessageType p_type, bool p_clear) {
 	if (messages.size() > 0 && messages[messages.size() - 1].text == p_msg && messages[messages.size() - 1].type == p_type) {
 		// If previous message is the same as the new one, increase previous count rather than adding another

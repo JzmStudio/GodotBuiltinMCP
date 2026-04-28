@@ -67,6 +67,7 @@
 #include "editor/editor_data.h"
 #include "editor/editor_interface.h"
 #include "editor/editor_log.h"
+#include "editor/mcp/mcp_server.h"
 #include "editor/editor_main_screen.h"
 #include "editor/editor_string_names.h"
 #include "editor/editor_undo_redo_manager.h"
@@ -9238,6 +9239,26 @@ EditorNode::EditorNode() {
 	log = memnew(EditorLog);
 	editor_dock_manager->add_dock(log);
 
+	// Initialize MCP server for AI tools
+	mcp_server = memnew(MCPServer);
+	add_child(mcp_server);
+	// Start MCP server on configured port (default 29170)
+	// Note: Settings may not exist yet, use defaults
+	int mcp_port = 29170;
+	bool mcp_enabled = true;
+	if (EditorSettings::get_singleton()->has_setting("network/mcp/server_port")) {
+		mcp_port = (int)EDITOR_GET("network/mcp/server_port");
+	}
+	if (mcp_port <= 0) {
+		mcp_port = 29170;
+	}
+	if (EditorSettings::get_singleton()->has_setting("network/mcp/enabled")) {
+		mcp_enabled = (bool)EDITOR_GET("network/mcp/enabled");
+	}
+	if (mcp_enabled) {
+		mcp_server->start(mcp_port);
+	}
+
 	center_split->connect(SceneStringName(resized), callable_mp(this, &EditorNode::_vp_resized));
 
 	native_shader_source_visualizer = memnew(EditorNativeShaderSourceVisualizer);
@@ -9638,6 +9659,13 @@ EditorNode::~EditorNode() {
 	memdelete(progress_hb);
 	memdelete(project_upgrade_tool);
 	memdelete(editor_dock_manager);
+
+	// Clean up MCP server
+	if (mcp_server) {
+		mcp_server->stop();
+		memdelete(mcp_server);
+		mcp_server = nullptr;
+	}
 
 	EditorSettings::destroy();
 	EditorThemeManager::finalize();

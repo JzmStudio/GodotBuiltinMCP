@@ -44,6 +44,7 @@
 #include "editor/docks/filesystem_dock.h"
 #include "editor/editor_interface.h"
 #include "editor/editor_node.h"
+#include "editor/mcp/mcp_server.h"
 #include "editor/editor_string_names.h"
 #include "editor/editor_undo_redo_manager.h"
 #include "editor/export/editor_export_platform.h"
@@ -197,6 +198,8 @@ void register_editor_types() {
 	GDREGISTER_ABSTRACT_CLASS(EditorUndoRedoManager);
 	GDREGISTER_CLASS(EditorContextMenuPlugin);
 
+	GDREGISTER_CLASS(MCPServer);
+
 	GDREGISTER_ABSTRACT_CLASS(FileSystemDock);
 	GDREGISTER_VIRTUAL_CLASS(EditorFileSystemImportFormatSupportQuery);
 
@@ -311,6 +314,10 @@ void register_editor_types() {
 
 	GLOBAL_DEF("editor/version_control/plugin_name", "");
 	GLOBAL_DEF("editor/version_control/autoload_on_startup", false);
+
+	// MCP Server settings for AI integration
+	GLOBAL_DEF("network/mcp/enabled", true);
+	GLOBAL_DEF(PropertyInfo(Variant::INT, "network/mcp/server_port", PROPERTY_HINT_RANGE, "1024,65535,1"), 29170);
 
 	EditorInterface::create();
 	Engine::Singleton ei_singleton = Engine::Singleton("EditorInterface", EditorInterface::get_singleton());

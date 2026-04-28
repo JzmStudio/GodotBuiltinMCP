@@ -95,6 +95,7 @@ class EditorTitleBar;
 class ExportTemplateManager;
 class EditorQuickOpenDialog;
 class FBXImporterManager;
+class MCPServer;
 class FileSystemDock;
 class HistoryDock;
 class OrphanResourcesDialog;
@@ -279,6 +280,8 @@ private:
 	ProjectSettingsEditor *project_settings_editor = nullptr;
 
 	FBXImporterManager *fbx_importer_manager = nullptr;
+
+	MCPServer *mcp_server = nullptr;
 
 	Vector<EditorPlugin *> editor_plugins;
 	bool _initializing_plugins = false;
