@@ -8,7 +8,7 @@
 
 1. 参考官方文档编译引擎。
 2. 启动bin中编译好的Godot引擎。
-3. 此仓库中.claude文件夹及.mcp.json已经配置好，Claude Code直接定位到此文件夹即可试用。
+3. 此仓库中.claude文件夹及.mcp.json已经配置好，注意会引用到editor/mcp/godot-mcp.py这个脚本，可以单独下载下来，Claude Code直接定位到此文件夹即可试用。
 
 **此Godot引擎作为方便AI调试之用，现在仅支持读取编辑器报错功能，除MCP外未对Godot做任何修改**
 
