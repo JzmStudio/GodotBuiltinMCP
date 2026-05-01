@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -X POST http://localhost:8765/mcp -H 'Content-Type: application/json' -d '{\"jsonrpc\": \"2.0\", \"method\": \"ping\", \"params\": {}, \"id\": 6}')",
+      "Bash(curl -s -X POST http://localhost:8765/mcp -H 'Content-Type: application/json' -d '{\"jsonrpc\": \"2.0\", \"method\": \"tools/call\", \"params\": {\"name\": \"subscribe_to_events\", \"arguments\": {\"event_types\": [\"errors\", \"output\"]}}, \"id\": 7}')",
+      "Bash(curl -s -X POST http://localhost:8765/mcp -H 'Content-Type: application/json' -d '{\"jsonrpc\": \"2.0\", \"method\": \"tools/call\", \"params\": {\"name\": \"get_runtime_output\", \"arguments\": {}}, \"id\": 11}')",
+      "Bash(curl -s -X POST http://localhost:8765/mcp -H 'Content-Type: application/json' -d '{\"jsonrpc\": \"2.0\", \"method\": \"tools/call\", \"params\": {\"name\": \"get_game_status\", \"arguments\": {}}, \"id\": 12}')",
+      "Bash(curl -s -X POST http://localhost:8765/mcp -H 'Content-Type: application/json' -d '{\"jsonrpc\": \"2.0\", \"method\": \"tools/call\", \"params\": {\"name\": \"get_editor_errors\", \"arguments\": {}}, \"id\": 20}')",
+      "Bash(curl -s -X POST http://localhost:8765/mcp -H 'Content-Type: application/json' -d '{\"jsonrpc\": \"2.0\", \"method\": \"tools/call\", \"params\": {\"name\": \"get_game_status\", \"arguments\": {}}, \"id\": 21}')",
+      "Bash(openspec status *)",
+      "Bash(openspec instructions *)",
+      "Bash(openspec new *)",
+      "Bash(curl -s -X POST http://localhost:29170/mcp -H \"Content-Type: application/json\" -d \"{\\\\\"jsonrpc\\\\\":\\\\\"2.0\\\\\",\\\\\"method\\\\\":\\\\\"ping\\\\\",\\\\\"params\\\\\":{},\\\\\"id\\\\\":2}\")",
+      "Bash(curl -s -X POST http://localhost:29170/mcp -H \"Content-Type: application/json\" -d \"{\\\\\"jsonrpc\\\\\":\\\\\"2.0\\\\\",\\\\\"method\\\\\":\\\\\"rpc.listMethods\\\\\",\\\\\"params\\\\\":{},\\\\\"id\\\\\":3}\")"
+    ]
+  }
+}

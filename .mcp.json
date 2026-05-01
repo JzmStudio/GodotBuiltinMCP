@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "godot-editor": {
+      "command": "python",
+      "args": ["editor/mcp/godot-mcp.py"],
+      "env": {
+        "GODOT_MCP_HOST": "127.0.0.1",
+        "GODOT_MCP_PORT": "29170"
+      }
+    }
+  }
+}
